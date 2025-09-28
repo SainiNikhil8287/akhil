@@ -8,7 +8,7 @@
     *{margin:0;padding:0;box-sizing:border-box;font-family:Arial, sans-serif;}
     body{line-height:1.6;color:#222;}
     a{text-decoration:none;color:inherit;}
-    img{max-width:100%;display:block;}
+    img, video{max-width:100%;display:block;}
 
     /* NAVBAR */
     header{
@@ -20,12 +20,12 @@
     nav ul{display:flex;gap:20px;list-style:none;}
     nav a{color:#fff;font-weight:500;}
     .menu-toggle{display:none;cursor:pointer;}
-    .logo img{
-  height:80px;   /* logo ki height adjust */
-  width:auto;
-  border-radius: 50%;
-}
-
+    .logo img, .logo video{
+      height:80px;   /* logo height */
+      width:80px;    /* square for perfect circle */
+      border-radius: 50%;
+      object-fit:cover;
+    }
 
     /* HERO */
     .hero{
@@ -47,8 +47,8 @@
 
     /* ABOUT */
     .about{display:flex;flex-wrap:wrap;gap:40px;align-items:center;}
-    .about img{flex:1;min-width:280px;border-radius:12px;}
-    .about-text{flex:1;font-size:18px;line-height:1.7;}
+    .about img, .about video{flex:1;min-width:280px;border-radius:12px;}
+    .about video{width:100%;aspect-ratio:16/9;object-fit:cover;}
 
     /* SERVICES */
     .services{display:grid;grid-template-columns:repeat(auto-fit,minmax(350px,1fr));gap:25px;}
@@ -57,15 +57,15 @@
       box-shadow:0 3px 8px rgba(0,0,0,0.1);transition:0.3s;
     }
     .card:hover{transform:translateY(-5px);}
-    .card img {
-  width: 100%;
-  height: auto;
-  object-fit: cover; /* pehle cover tha */
-  border-radius: 8px;
-  margin-bottom: 15px;
-  background: #fff; /* agar image chhoti ho to background safe dikhe */
-  padding: 5px; /* thoda gap taaki image crop na ho */
-}
+    .card img, .card video{
+      width:100%;
+      height:200px;            /* uniform height for cards */
+      object-fit:cover;        /* cover like images */
+      border-radius:8px;
+      margin-bottom:15px;
+      background:#fff;         /* safe background */
+      padding:5px;             /* small gap like earlier */
+    }
     .card h3{color:#152543;margin-bottom:10px;font-size:20px;}
 
     /* CONTACT */
@@ -86,20 +86,22 @@
 <body>
 
   <!-- HEADER -->
- <header>
-  <div class="logo">
-    <img src="assets/akm.jpeg" alt="AKM Logo">
-  </div>
-  <nav>
-    <div class="menu-toggle">☰</div>
-    <ul>
-      <li><a href="#home">Home</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="#services">Services</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-  </nav>
-</header>
+  <header>
+    <div class="logo">
+      <video autoplay muted loop playsinline aria-label="AKM Logo" poster="assets/akm.jpeg">
+        <source src="https://samplelib.com/lib/preview/mp4/sample-5s.mp4" type="video/mp4" />
+      </video>
+    </div>
+    <nav>
+      <div class="menu-toggle">☰</div>
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
 
   <!-- HERO -->
   <section class="hero" id="home">
@@ -112,7 +114,9 @@
   <section class="section" id="about">
     <h2>About AKM</h2>
     <div class="about">
-      <img src="https://picsum.photos/500/350?ai" alt="About AI">
+      <video autoplay muted loop playsinline aria-label="About AI" poster="https://picsum.photos/500/350?ai">
+        <source src="https://samplelib.com/lib/preview/mp4/sample-5s.mp4" type="video/mp4" />
+      </video>
       <div class="about-text">
         <p><strong>AKM</strong> is a premier AI service provider founded by <b>Akhil Kumar Mishra</b>.  
         We specialize in converting data into insights & automating processes to boost efficiency and drive growth.  
@@ -127,7 +131,9 @@
     <div class="services">
 
       <div class="card">
-        <img src="assets/1.jpeg" alt="AI & ML Solutions">
+        <video autoplay muted loop playsinline aria-label="AI & ML Solutions" poster="assets/1.jpeg">
+          <source src="https://samplelib.com/lib/preview/mp4/sample-5s.mp4" type="video/mp4" />
+        </video>
         <h3>AI & ML Solutions</h3>
         <p>We use artificial intelligence to help your business grow and operate more efficiently.
 
@@ -135,55 +141,73 @@ Predictive Analytics: We help you forecast future trends and customer behavior, 
       </div>
 
       <div class="card">
-        <img src="assets/2.jpeg" alt="Data Analytics">
+        <video autoplay muted loop playsinline aria-label="Data Analytics & Insights" poster="assets/2.jpeg">
+          <source src="https://samplelib.com/lib/preview/mp4/sample-5s.mp4" type="video/mp4" />
+        </video>
         <h3>Data Analytics & Insights</h3>
         <p>Data Analytics & Insights: Turn raw data into decisions with BI dashboards, clear visualizations, real-time analytics, and accurate data cleaning for reliable, smart, and agile business growth.</p>
       </div>
 
       <div class="card">
-        <img src="assets/3.jpeg" alt="Automation">
+        <video autoplay muted loop playsinline aria-label="Automation Services" poster="assets/3.jpeg">
+          <source src="https://samplelib.com/lib/preview/mp4/sample-5s.mp4" type="video/mp4" />
+        </video>
         <h3>Automation Services</h3>
         <p>Automation Services: Boost efficiency with RPA for routine tasks, workflow automation for speed, and AI chatbots for instant support—saving time, reducing errors, cutting costs, and improving productivity.</p>
       </div>
 
       <div class="card">
-        <img src="assets/4.jpeg" alt="Corporate AI">
+        <video autoplay muted loop playsinline aria-label="Corporate AI Solutions" poster="assets/4.jpeg">
+          <source src="https://samplelib.com/lib/preview/mp4/sample-5s.mp4" type="video/mp4" />
+        </video>
         <h3>Corporate AI Solutions</h3>
         <p>Corporate AI Solutions: Optimize business with AI—predict customer behavior, detect fraud in real time, and gain productivity insights to boost efficiency, reduce risks, and improve retention.</p>
       </div>
 
       <div class="card">
-        <img src="assets/5.jpeg" alt="Healthcare AI">
+        <video autoplay muted loop playsinline aria-label="Healthcare AI" poster="assets/5.jpeg">
+          <source src="https://samplelib.com/lib/preview/mp4/sample-5s.mp4" type="video/mp4" />
+        </video>
         <h3>Healthcare AI</h3>
         <p>Healthcare AI Solutions: Enhance care with AI—medical image analysis for faster diagnoses, patient data models for outcome prediction, and real-time health monitoring to detect risks early and improve efficiency.</p>
       </div>
 
       <div class="card">
-        <img src="assets/6.jpeg" alt="Transport AI">
+        <video autoplay muted loop playsinline aria-label="Transportation & Logistics" poster="assets/6.jpeg">
+          <source src="https://samplelib.com/lib/preview/mp4/sample-5s.mp4" type="video/mp4" />
+        </video>
         <h3>Transportation & Logistics</h3>
         <p>Transportation & Logistics: Optimize supply chain with AI—route optimization to cut costs, demand forecasting for better planning, and smart traffic management to reduce congestion and speed up deliveries.</p>
       </div>
 
       <div class="card">
-        <img src="assets/7.jpeg" alt="Telecom AI">
+        <video autoplay muted loop playsinline aria-label="Telecommunication AI" poster="assets/7.jpeg">
+          <source src="https://samplelib.com/lib/preview/mp4/sample-5s.mp4" type="video/mp4" />
+        </video>
         <h3>Telecommunication AI</h3>
         <p>Telecommunication AI: Enhance services with AI—optimize networks for speed & reliability, predict maintenance to prevent outages, and use chatbots for instant support, lowering costs & boosting satisfaction.</p>
       </div>
 
       <div class="card">
-        <img src="assets/8.jpeg" alt="Custom AI">
+        <video autoplay muted loop playsinline aria-label="Custom AI Development" poster="assets/8.jpeg">
+          <source src="https://samplelib.com/lib/preview/mp4/sample-5s.mp4" type="video/mp4" />
+        </video>
         <h3>Custom AI Development</h3>
         <p>Custom AI Development: Build tailored AI models, manage end-to-end project implementation, and provide AI strategy & consulting to solve business problems and align with long-term growth goals.</p>
       </div>
 
       <div class="card">
-        <img src="assets/9.jpeg">
+        <video autoplay muted loop playsinline aria-label="Cloud & Deployment" poster="assets/9.jpeg">
+          <source src="https://samplelib.com/lib/preview/mp4/sample-5s.mp4" type="video/mp4" />
+        </video>
         <h3>Cloud & Deployment</h3>
         <p>We deploy AI models efficiently on AWS, Azure, GCP, build scalable infrastructure, and set up MLOps for continuous updates, ensuring reliable, high-performing AI solutions in real world.</p>
       </div>
 
       <div class="card">
-        <img src="assets/10.jpeg" alt="Training">
+        <video autoplay muted loop playsinline aria-label="Training & Consultation" poster="assets/10.jpeg">
+          <source src="https://samplelib.com/lib/preview/mp4/sample-5s.mp4" type="video/mp4" />
+        </video>
         <h3>Training & Consultation</h3>
         <p>We help businesses thrive in AI with hands-on workshops, corporate training, and strategic consulting, building team expertise, leveraging data, and aligning AI initiatives with business goals.</p>
       </div>
@@ -193,12 +217,12 @@ Predictive Analytics: We help you forecast future trends and customer behavior, 
 
   <!-- CONTACT -->
   <section class="section contact" id="contact">
-  <h2>Contact Us</h2>
-  <div>
-    📞 <b><a href="tel:8285792553">8285792553</a></b> <br/>
-    📧 <b><a href="mailto:akhilmishra1997@gmail.com">akhilmishra1997@gmail.com</a></b>
-  </div>
-</section>
+    <h2>Contact Us</h2>
+    <div>
+      📞 <b><a href="tel:8285792553">8285792553</a></b> <br/>
+      📧 <b><a href="mailto:akhilmishra1997@gmail.com">akhilmishra1997@gmail.com</a></b>
+    </div>
+  </section>
 
   <!-- FOOTER -->
   <footer>
