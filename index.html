@@ -1,598 +1,216 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>AI Neuro Lab — Services & Conditions</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>AKM - AI Solutions</title>
   <style>
-    :root{--bg:#0f1724;--card:#0b1220;--muted:#9aa6b2;--accent1:#7c3aed;--accent2:#06b6d4}
-    *{box-sizing:border-box}
-    body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;color:#e6eef6;background:linear-gradient(180deg,var(--bg),#071428 120%);-webkit-font-smoothing:antialiased}
-    .container{max-width:1100px;margin:36px auto;padding:24px}
-    header{display:flex;align-items:center;justify-content:space-between;margin-bottom:28px}
-    .brand{display:flex;gap:12px;align-items:center}
-    .logo{width:56px;height:56px;border-radius:12px;background:linear-gradient(135deg,var(--accent1),var(--accent2));display:flex;align-items:center;justify-content:center;color:white;font-weight:700}
-    h1{font-size:22px;margin:0}
-    p.lead{color:var(--muted);margin:4px 0 0;font-size:14px}
-    nav a{color:var(--muted);text-decoration:none;margin-left:14px;font-weight:600}
+    *{margin:0;padding:0;box-sizing:border-box;font-family:Arial, sans-serif;}
+    body{line-height:1.6;color:#222;}
+    a{text-decoration:none;color:inherit;}
+    img{max-width:100%;display:block;}
 
-    .hero{background:linear-gradient(180deg, rgba(124,58,237,0.06), rgba(6,182,212,0.02));padding:26px;border-radius:14px;display:flex;gap:20px;align-items:center}
-    .hero-left{flex:1}
-    .hero h2{margin:0 0 8px;font-size:28px}
-    .hero p{margin:0 0 14px;color:var(--muted)}
-    .btn{display:inline-block;padding:10px 16px;border-radius:10px;background:linear-gradient(90deg,var(--accent1),var(--accent2));color:white;text-decoration:none;font-weight:700;margin-right:10px}
-    .secondary{background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--muted);padding:10px 14px;border-radius:10px}
+    /* NAVBAR */
+    header{
+      background:#152543;color:#fff;padding:15px 10%;
+      display:flex;justify-content:space-between;align-items:center;
+      position:sticky;top:0;z-index:1000;
+    }
+    header h1{font-size:22px;}
+    nav ul{display:flex;gap:20px;list-style:none;}
+    nav a{color:#fff;font-weight:500;}
+    .menu-toggle{display:none;cursor:pointer;}
+    .logo img{
+  height:80px;   /* logo ki height adjust */
+  width:auto;
+  border-radius: 50%;
+}
 
-    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:20px}
-    .card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:18px;border-radius:12px;border:1px solid rgba(255,255,255,0.03)}
-    .card h3{margin:0 0 8px}
-    .muted{color:var(--muted);font-size:13px}
-    .pill{display:inline-block;padding:6px 10px;border-radius:999px;background:rgba(255,255,255,0.03);font-size:12px;margin-top:10px}
 
-    /* Tabs section */
-    .map{margin-top:28px}
-    .tabs-container{
-      display:grid;
-      grid-template-columns:280px 1fr;
-      gap:16px;
-      background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
-      border:1px solid rgba(255,255,255,0.03);
-      border-radius:12px;
-      padding:16px;
+    /* HERO */
+    .hero{
+      background:linear-gradient(rgba(21,37,67,0.85),rgba(21,37,67,0.85)),
+      url('https://picsum.photos/1600/800?tech') center/cover no-repeat;
+      color:#fff;text-align:center;padding:100px 20px;
     }
-    .tab-list{
-      display:flex;
-      flex-direction:column;
-      gap:8px;
-      padding-right:6px;
-      max-height:520px;
-      overflow:auto;
+    .hero h2{font-size:38px;margin-bottom:15px;}
+    .hero p{font-size:18px;margin-bottom:25px;}
+    .btn{
+      background:#ffb400;color:#000;padding:12px 25px;border-radius:25px;
+      font-weight:bold;display:inline-block;transition:0.3s;
     }
-    .tab{
-      text-align:left;
-      width:100%;
-      padding:10px 12px;
-      border-radius:10px;
-      border:1px solid rgba(255,255,255,0.06);
-      background:rgba(255,255,255,0.02);
-      color:#e6eef6;
-      cursor:pointer;
-      font-weight:600;
-      transition:all .2s ease;
-    }
-    .tab:hover{border-color:rgba(255,255,255,0.12)}
-    .tab.is-active{
-      background:linear-gradient(90deg,var(--accent1),var(--accent2));
-      border-color:transparent;
-    }
-    .tab-panel{display:none;}
-    .tab-panel.active{display:block;}
+    .btn:hover{background:#ffc933;}
 
-    .panel-wrap{
-      display:grid;
-      grid-template-columns: 1fr 280px;
-      gap:16px;
-      align-items:start;
-    }
-    .panel-content h3{margin:0 0 8px}
-    .panel-content .small{margin:8px 0 0}
-    .panel-badge{
-      display:inline-block;
-      padding:6px 10px;
-      border-radius:999px;
-      background:rgba(255,255,255,0.05);
-      font-size:12px;
-      margin-bottom:10px;
-      color:var(--muted);
-    }
+    /* SECTIONS */
+    .section{padding:60px 10%;}
+    .section h2{text-align:center;font-size:32px;margin-bottom:40px;color:#152543;}
 
-    .img-card{
-      background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
-      border:1px solid rgba(255,255,255,0.03);
-      border-radius:12px;
-      padding:10px;
-      position:relative;
-    }
-    .img-card img{
-      width:100%;
-      height:auto;
-      display:block;
-      border-radius:8px;
-      cursor:zoom-in;
-    }
-    .zoom-hint{
-      position:absolute;
-      bottom:10px; right:10px;
-      background:rgba(0,0,0,0.45);
-      padding:4px 8px;
-      border-radius:8px;
-      font-size:12px;
-      color:#fff;
-    }
+    /* ABOUT */
+    .about{display:flex;flex-wrap:wrap;gap:40px;align-items:center;}
+    .about img{flex:1;min-width:280px;border-radius:12px;}
+    .about-text{flex:1;font-size:18px;line-height:1.7;}
 
-    /* Lightbox (zoom) */
-    dialog#lightbox{
-      border:none;
-      padding:0;
-      background:transparent;
-      max-width:90vw;
+    /* SERVICES */
+    .services{display:grid;grid-template-columns:repeat(auto-fit,minmax(350px,1fr));gap:25px;}
+    .card{
+      background:#f9f9f9;padding:20px;border-radius:12px;
+      box-shadow:0 3px 8px rgba(0,0,0,0.1);transition:0.3s;
     }
-    dialog#lightbox::backdrop{
-      background:rgba(0,0,0,0.7);
-      backdrop-filter:saturate(120%) blur(2px);
-    }
-    .lightbox-inner{
-      position:relative;
-    }
-    #lightbox-img{
-      width:90vw;
-      max-width:980px;
-      height:auto;
-      border-radius:12px;
-      box-shadow:0 8px 32px rgba(0,0,0,0.45);
-    }
-    .lightbox-close{
-      position:absolute;
-      top:8px;
-      right:8px;
-      background:rgba(0,0,0,0.6);
-      color:#fff;
-      border:none;
-      padding:8px 10px;
-      border-radius:10px;
-      cursor:pointer;
-      font-weight:700;
-    }
+    .card:hover{transform:translateY(-5px);}
+    .card img {
+  width: 100%;
+  height: auto;
+  object-fit: cover; /* pehle cover tha */
+  border-radius: 8px;
+  margin-bottom: 15px;
+  background: #fff; /* agar image chhoti ho to background safe dikhe */
+  padding: 5px; /* thoda gap taaki image crop na ho */
+}
+    .card h3{color:#152543;margin-bottom:10px;font-size:20px;}
 
-    .small{font-size:13px;color:var(--muted)}
-    footer{margin-top:32px;padding:18px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.005));display:flex;justify-content:space-between;align-items:center}
+    /* CONTACT */
+    .contact{background:#f0f4ff;text-align:center;font-size:18px;line-height:1.8;}
 
-    /* responsive */
-    @media (max-width:900px){
-      .grid{grid-template-columns:repeat(2,1fr)}
-      .hero h2{font-size:22px}
-      .tabs-container{grid-template-columns:1fr}
-      .panel-wrap{grid-template-columns:1fr}
-    }
-    @media (max-width:600px){
-      .grid{grid-template-columns:1fr}
-      .brand{flex-direction:column;align-items:flex-start}
-      .hero{flex-direction:column;align-items:flex-start}
-      .container{padding:14px}
+    /* FOOTER */
+    footer{background:#152543;color:#fff;text-align:center;padding:20px;}
+
+    /* RESPONSIVE */
+    @media(max-width:768px){
+      nav ul{display:none;flex-direction:column;gap:10px;background:#152543;
+        position:absolute;top:60px;right:10%;padding:20px;border-radius:10px;}
+      nav ul.active{display:flex;}
+      .menu-toggle{display:block;}
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <header>
-      <div class="brand">
-        <div class="logo">AI</div>
-        <div>
-          <h1>AI Neuro Lab</h1>
-          <p class="lead">Measure Stress • Detect Neurological Conditions • Rehab & Wellness</p>
-        </div>
-      </div>
-      <nav>
-        <a href="#services">Services</a>
-        <a href="#mapping">Conditions</a>
-        <a href="#contact">Contact</a>
-      </nav>
-    </header>
 
-    <section class="hero" id="top">
-      <div class="hero-left">
-        <h2>Stress Detection & Neurology AI Solutions</h2>
-        <p>End‑to‑end AI tools for Corporate HR, Schools and Healthcare clinics — stress analytics, tumor detection, epilepsy monitoring, paralysis rehab and more.</p>
-        <a class="btn" href="#services">Book a Demo</a>
-        <a class="secondary" href="#mapping">View Conditions</a>
-      </div>
-      <div style="width:320px">
-        <!-- simple illustrative svg -->
-        <svg viewBox="0 0 200 200" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <linearGradient id="g1" x1="0" x2="1">
-              <stop offset="0" stop-color="#7c3aed" />
-              <stop offset="1" stop-color="#06b6d4" />
-            </linearGradient>
-          </defs>
-          <rect rx="20" width="200" height="200" fill="url(#g1)" opacity="0.12"/>
-          <g transform="translate(20,16)" fill="#fff">
-            <path d="M60 20c-12 0-22 8-26 19-8 2-14 10-14 19 0 11 9 20 20 20h84c11 0 20-9 20-20 0-9-6-17-14-19-4-11-14-19-26-19H60z" opacity="0.9"/>
-            <circle cx="40" cy="110" r="6" opacity="0.6"/>
-            <circle cx="72" cy="96" r="5" opacity="0.5"/>
-            <circle cx="110" cy="108" r="7" opacity="0.7"/>
-          </g>
-        </svg>
-      </div>
-    </section>
-
-    <section id="services" style="margin-top:22px">
-      <h2 style="margin:0 0 12px">Our Services</h2>
-      <p class="small" style="margin:0 0 12px">Selected service offerings tailored for corporates, schools and healthcare providers.</p>
-
-      <div class="grid">
-        <div class="card">
-          <h3>Stress Analytics Platform</h3>
-          <p class="muted">Employee wellbeing dashboards, real‑time alerts, attrition risk and organizational heatmaps.</p>
-          <div class="pill">Data: HR records, wearables, voice, facial</div>
-        </div>
-
-        <div class="card">
-          <h3>Student Stress Monitor</h3>
-          <p class="muted">Exam/anxiety monitoring for schools — teachers & parents get actionable alerts.</p>
-          <div class="pill">Data: classroom sensors, mobile app, behavior logs</div>
-        </div>
-
-        <div class="card">
-          <h3>Wearable Integration</h3>
-          <p class="muted">Smartwatch and band integration for continuous HRV, sleep and activity based stress scoring.</p>
-          <div class="pill">Integrations: Apple, WearOS, Fitbit (API)</div>
-        </div>
-
-        <div class="card">
-          <h3>Voice & Facial AI Stress Test</h3>
-          <p class="muted">Video/voice based stress inference using tone, pitch, micro‑expressions and posture.</p>
-          <div class="pill">Use: Telehealth, chatbots, remote assessment</div>
-        </div>
-
-        <div class="card">
-          <h3>Corporate Wellness AI</h3>
-          <p class="muted">Personalized recommendations (yoga, meditation, breaks) and program nudges to reduce burnout.</p>
-          <div class="pill">Outcome: Reduced sick days, improved engagement</div>
-        </div>
-
-        <div class="card">
-          <h3>Brain Tumor Detection AI</h3>
-          <p class="muted">MRI/CT scan analysis for early tumor detection and lesion segmentation to assist radiologists.</p>
-          <div class="pill">Model: CNN / 3D U‑Net pipelines</div>
-        </div>
-
-        <div class="card">
-          <h3>Stroke & Epilepsy Monitoring</h3>
-          <p class="muted">EEG/CT based seizure detection, stroke‑risk alerts and acute‑care triage support.</p>
-          <div class="pill">Data: EEG, CT, clinical history</div>
-        </div>
-
-        <div class="card">
-          <h3>Parkinson’s & Alzheimer’s Tools</h3>
-          <p class="muted">Movement, speech and cognitive tests to detect early signs and monitor progression.</p>
-          <div class="pill">Focus: tremor analysis, memory test analytics</div>
-        </div>
-
-        <div class="card">
-          <h3>Paralysis Assist (Rehab & BCI)</h3>
-          <p class="muted">BCI prototypes, virtual therapy and recovery‑tracking dashboards for paralyzed patients.</p>
-          <div class="pill">Includes: Tele‑rehab sessions & performance metrics</div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Conditions as Tabs -->
-    <section id="mapping" class="map">
-      <h2 style="margin:16px 0 12px">Conditions & Solutions</h2>
-      <p class="small" style="margin:0 0 12px">Browse by condition to see the most relevant AI Neuro Lab services and data sources. Click the image to zoom.</p>
-
-      <div class="tabs-container" role="region" aria-label="Conditions Tabs">
-        <div class="tab-list" role="tablist" aria-label="Condition list">
-          <button class="tab is-active" role="tab" aria-selected="true" aria-controls="panel-brain-tumor" id="tab-brain-tumor">Brain Tumor</button>
-          <button class="tab" role="tab" aria-selected="false" aria-controls="panel-stroke" id="tab-stroke">Stroke</button>
-          <button class="tab" role="tab" aria-selected="false" aria-controls="panel-epilepsy" id="tab-epilepsy">Epilepsy / Seizures</button>
-          <button class="tab" role="tab" aria-selected="false" aria-controls="panel-parkinson" id="tab-parkinson">Parkinson's Disease</button>
-          <button class="tab" role="tab" aria-selected="false" aria-controls="panel-alzheimer" id="tab-alzheimer">Alzheimer’s / Dementia</button>
-          <button class="tab" role="tab" aria-selected="false" aria-controls="panel-stress" id="tab-stress">Stress / Anxiety / Depression</button>
-          <button class="tab" role="tab" aria-selected="false" aria-controls="panel-sleep" id="tab-sleep">Sleep Disorders & Burnout</button>
-          <button class="tab" role="tab" aria-selected="false" aria-controls="panel-adhd" id="tab-adhd">ADHD / Autism (Students)</button>
-          <button class="tab" role="tab" aria-selected="false" aria-controls="panel-paralysis" id="tab-paralysis">Paralysis / Spinal Cord Injury</button>
-          <button class="tab" role="tab" aria-selected="false" aria-controls="panel-migraine" id="tab-migraine">Migraine / Chronic Fatigue</button>
-        </div>
-
-        <!-- Panels -->
-        <div>
-          <!-- Brain Tumor -->
-          <div class="tab-panel active" role="tabpanel" id="panel-brain-tumor" aria-labelledby="tab-brain-tumor">
-            <div class="panel-wrap">
-              <div class="panel-content">
-                <span class="panel-badge">Oncology</span>
-                <h3>Brain Tumor</h3>
-                <p class="small">Relevant Services: Brain Tumor Detection AI</p>
-                <p class="small">Primary Data Sources: MRI, CT, Radiology Reports</p>
-                <p class="muted" style="margin-top:10px">Early detection and lesion segmentation workflows to support radiologists and tumor boards.</p>
-              </div>
-              <div class="img-card">
-                <img
-                  src="https://images.unsplash.com/photo-1581594693700-7f9d4eb6f3a4?q=80&w=1200&auto=format&fit=crop"
-                  alt="MRI brain scan illustration"
-                  data-zoomable
-                  data-full="https://images.unsplash.com/photo-1581594693700-7f9d4eb6f3a4?q=80&w=2000&auto=format&fit=crop"
-                  loading="lazy"
-                />
-                <div class="zoom-hint">Click to zoom</div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Stroke -->
-          <div class="tab-panel" role="tabpanel" id="panel-stroke" aria-labelledby="tab-stroke">
-            <div class="panel-wrap">
-              <div class="panel-content">
-                <span class="panel-badge">Acute Care</span>
-                <h3>Stroke</h3>
-                <p class="small">Relevant Services: Stroke Monitoring & Stroke‑risk Prediction</p>
-                <p class="small">Primary Data Sources: CT, Clinical History, Vitals</p>
-                <p class="muted" style="margin-top:10px">Risk scoring, triage support and timely alerts for suspected stroke events.</p>
-              </div>
-              <div class="img-card">
-                <img
-                  src="https://images.unsplash.com/photo-1559757148-5c350d0d3c55?q=80&w=1200&auto=format&fit=crop"
-                  alt="CT brain scan visualization"
-                  data-zoomable
-                  data-full="https://images.unsplash.com/photo-1559757148-5c350d0d3c55?q=80&w=2000&auto=format&fit=crop"
-                  loading="lazy"
-                />
-                <div class="zoom-hint">Click to zoom</div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Epilepsy -->
-          <div class="tab-panel" role="tabpanel" id="panel-epilepsy" aria-labelledby="tab-epilepsy">
-            <div class="panel-wrap">
-              <div class="panel-content">
-                <span class="panel-badge">Neuro Monitoring</span>
-                <h3>Epilepsy / Seizures</h3>
-                <p class="small">Relevant Services: Stroke & Epilepsy Monitoring</p>
-                <p class="small">Primary Data Sources: EEG, Wearables, Video</p>
-                <p class="muted" style="margin-top:10px">Seizure detection and event annotation from EEG and video streams.</p>
-              </div>
-              <div class="img-card">
-                <img
-                  src="https://images.unsplash.com/photo-1516570161787-2fd917215a3d?q=80&w=1200&auto=format&fit=crop"
-                  alt="EEG monitoring setup"
-                  data-zoomable
-                  data-full="https://images.unsplash.com/photo-1516570161787-2fd917215a3d?q=80&w=2000&auto=format&fit=crop"
-                  loading="lazy"
-                />
-                <div class="zoom-hint">Click to zoom</div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Parkinson's -->
-          <div class="tab-panel" role="tabpanel" id="panel-parkinson" aria-labelledby="tab-parkinson">
-            <div class="panel-wrap">
-              <div class="panel-content">
-                <span class="panel-badge">Movement Disorders</span>
-                <h3>Parkinson's Disease</h3>
-                <p class="small">Relevant Services: Parkinson’s Tools (tremor analysis)</p>
-                <p class="small">Primary Data Sources: Wearables, Video, Gait Sensors</p>
-                <p class="muted" style="margin-top:10px">Track tremor intensity, gait changes and response to therapy.</p>
-              </div>
-              <div class="img-card">
-                <img
-                  src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?q=80&w=1200&auto=format&fit=crop"
-                  alt="Motion tracking for gait analysis"
-                  data-zoomable
-                  data-full="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?q=80&w=2000&auto=format&fit=crop"
-                  loading="lazy"
-                />
-                <div class="zoom-hint">Click to zoom</div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Alzheimer's -->
-          <div class="tab-panel" role="tabpanel" id="panel-alzheimer" aria-labelledby="tab-alzheimer">
-            <div class="panel-wrap">
-              <div class="panel-content">
-                <span class="panel-badge">Cognitive Health</span>
-                <h3>Alzheimer’s / Dementia</h3>
-                <p class="small">Relevant Services: Cognitive Monitoring Tools</p>
-                <p class="small">Primary Data Sources: Cognitive Tests, App Usage, Caregiver Reports</p>
-                <p class="muted" style="margin-top:10px">Early cognitive decline screening and longitudinal monitoring.</p>
-              </div>
-              <div class="img-card">
-                <img
-                  src="https://images.unsplash.com/photo-1507537297725-24a1c029d3ca?q=80&w=1200&auto=format&fit=crop"
-                  alt="Brain cognition illustration"
-                  data-zoomable
-                  data-full="https://images.unsplash.com/photo-1507537297725-24a1c029d3ca?q=80&w=2000&auto=format&fit=crop"
-                  loading="lazy"
-                />
-                <div class="zoom-hint">Click to zoom</div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Stress / Anxiety / Depression -->
-          <div class="tab-panel" role="tabpanel" id="panel-stress" aria-labelledby="tab-stress">
-            <div class="panel-wrap">
-              <div class="panel-content">
-                <span class="panel-badge">Mental Wellbeing</span>
-                <h3>Stress / Anxiety / Depression</h3>
-                <p class="small">Relevant Services: Stress Analytics Platform, Voice & Facial AI, Corporate Wellness AI</p>
-                <p class="small">Primary Data Sources: HR Data, Wearables, Voice, Behavioral Logs</p>
-                <p class="muted" style="margin-top:10px">Organizational insights plus personalized nudges to reduce burnout and absenteeism.</p>
-              </div>
-              <div class="img-card">
-                <img
-                  src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=80&w=1200&auto=format&fit=crop"
-                  alt="Employee wellbeing and analytics"
-                  data-zoomable
-                  data-full="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=80&w=2000&auto=format&fit=crop"
-                  loading="lazy"
-                />
-                <div class="zoom-hint">Click to zoom</div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Sleep -->
-          <div class="tab-panel" role="tabpanel" id="panel-sleep" aria-labelledby="tab-sleep">
-            <div class="panel-wrap">
-              <div class="panel-content">
-                <span class="panel-badge">Sleep Health</span>
-                <h3>Sleep Disorders & Burnout</h3>
-                <p class="small">Relevant Services: Wearable Integration, Stress Analytics Platform</p>
-                <p class="small">Primary Data Sources: Sleep Data, HRV, Activity</p>
-                <p class="muted" style="margin-top:10px">Continuous sleep and recovery scoring with targeted recommendations.</p>
-              </div>
-              <div class="img-card">
-                <img
-                  src="https://images.unsplash.com/photo-1518481612222-68bbe828ecd1?q=80&w=1200&auto=format&fit=crop"
-                  alt="Sleep tracking on smartwatch"
-                  data-zoomable
-                  data-full="https://images.unsplash.com/photo-1518481612222-68bbe828ecd1?q=80&w=2000&auto=format&fit=crop"
-                  loading="lazy"
-                />
-                <div class="zoom-hint">Click to zoom</div>
-              </div>
-            </div>
-          </div>
-
-          <!-- ADHD / Autism -->
-          <div class="tab-panel" role="tabpanel" id="panel-adhd" aria-labelledby="tab-adhd">
-            <div class="panel-wrap">
-              <div class="panel-content">
-                <span class="panel-badge">Education</span>
-                <h3>ADHD / Autism (Students)</h3>
-                <p class="small">Relevant Services: Student Stress Monitor, Behavioral Screening</p>
-                <p class="small">Primary Data Sources: Classroom Data, Behavior Logs, Video</p>
-                <p class="muted" style="margin-top:10px">Teacher dashboards and parent alerts for timely support and accommodations.</p>
-              </div>
-              <div class="img-card">
-                <img
-                  src="https://images.unsplash.com/photo-1529070538774-1843cb3265df?q=80&w=1200&auto=format&fit=crop"
-                  alt="Students in classroom monitoring"
-                  data-zoomable
-                  data-full="https://images.unsplash.com/photo-1529070538774-1843cb3265df?q=80&w=2000&auto=format&fit=crop"
-                  loading="lazy"
-                />
-                <div class="zoom-hint">Click to zoom</div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Paralysis -->
-          <div class="tab-panel" role="tabpanel" id="panel-paralysis" aria-labelledby="tab-paralysis">
-            <div class="panel-wrap">
-              <div class="panel-content">
-                <span class="panel-badge">Rehab & BCI</span>
-                <h3>Paralysis / Spinal Cord Injury</h3>
-                <p class="small">Relevant Services: Paralysis Assist (BCI & Rehab)</p>
-                <p class="small">Primary Data Sources: BCI Signals, Motion Sensors, Rehab Session Data</p>
-                <p class="muted" style="margin-top:10px">Assistive BCI prototypes, virtual therapy and recovery tracking dashboards.</p>
-              </div>
-              <div class="img-card">
-                <img
-                  src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?q=80&w=1200&auto=format&fit=crop"
-                  alt="Rehabilitation session"
-                  data-zoomable
-                  data-full="https://images.unsplash.com/photo-1517048676732-d65bc937f952?q=80&w=2000&auto=format&fit=crop"
-                  loading="lazy"
-                />
-                <div class="zoom-hint">Click to zoom</div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Migraine / Chronic Fatigue -->
-          <div class="tab-panel" role="tabpanel" id="panel-migraine" aria-labelledby="tab-migraine">
-            <div class="panel-wrap">
-              <div class="panel-content">
-                <span class="panel-badge">Chronic Care</span>
-                <h3>Migraine / Chronic Fatigue</h3>
-                <p class="small">Relevant Services: Stress Analytics & Predictive Alerts</p>
-                <p class="small">Primary Data Sources: Wearables, Symptom Logs, Lifestyle Data</p>
-                <p class="muted" style="margin-top:10px">Trigger tracking and proactive alerts to reduce episode frequency.</p>
-              </div>
-              <div class="img-card">
-                <img
-                  src="https://images.unsplash.com/photo-1516826957135-700dedea698c?q=80&w=1200&auto=format&fit=crop"
-                  alt="Headache and health tracking"
-                  data-zoomable
-                  data-full="https://images.unsplash.com/photo-1516826957135-700dedea698c?q=80&w=2000&auto=format&fit=crop"
-                  loading="lazy"
-                />
-                <div class="zoom-hint">Click to zoom</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Lightbox dialog for image zoom -->
-      <dialog id="lightbox" aria-label="Image preview">
-        <div class="lightbox-inner">
-          <button class="lightbox-close" aria-label="Close" onclick="document.getElementById('lightbox').close()">✕</button>
-          <img id="lightbox-img" src="" alt="Zoomed preview"/>
-        </div>
-      </dialog>
-    </section>
-
-    <footer id="contact">
-      <div>
-        <strong>Ready to pilot?</strong>
-        <div class="small">Email: hello@aineurolab.example | Phone: +91‑XXXXXXXXXX</div>
-      </div>
-      <div class="small">© 2025 AI Neuro Lab — Built for wellbeing</div>
-    </footer>
+  <!-- HEADER -->
+ <header>
+  <div class="logo">
+    <img src="assets/akm.jpeg" alt="AKM Logo">
   </div>
+  <nav>
+    <div class="menu-toggle">☰</div>
+    <ul>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+</header>
 
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <h2>AI & Machine Learning Solutions</h2>
+    <p>Innovate, Automate & Grow with AI-driven solutions for your business.</p>
+    <a href="#services" class="btn">Explore Services</a>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="section" id="about">
+    <h2>About AKM</h2>
+    <div class="about">
+      <img src="https://picsum.photos/500/350?ai" alt="About AI">
+      <div class="about-text">
+        <p><strong>AKM</strong> is a premier AI service provider founded by <b>Akhil Kumar Mishra</b>.  
+        We specialize in converting data into insights & automating processes to boost efficiency and drive growth.  
+        Our mission is to deliver cutting-edge AI solutions tailored to your business needs.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="section" id="services">
+    <h2>Our Services</h2>
+    <div class="services">
+
+      <div class="card">
+        <img src="assets/1.jpeg" alt="AI & ML Solutions">
+        <h3>AI & ML Solutions</h3>
+        <p>We use artificial intelligence to help your business grow and operate more efficiently.
+
+Predictive Analytics: We help you forecast future trends and customer behavior, so you can make smarter, proactive decisions.</p>
+      </div>
+
+      <div class="card">
+        <img src="assets/2.jpeg" alt="Data Analytics">
+        <h3>Data Analytics & Insights</h3>
+        <p>Data Analytics & Insights: Turn raw data into decisions with BI dashboards, clear visualizations, real-time analytics, and accurate data cleaning for reliable, smart, and agile business growth.</p>
+      </div>
+
+      <div class="card">
+        <img src="assets/3.jpeg" alt="Automation">
+        <h3>Automation Services</h3>
+        <p>Automation Services: Boost efficiency with RPA for routine tasks, workflow automation for speed, and AI chatbots for instant support—saving time, reducing errors, cutting costs, and improving productivity.</p>
+      </div>
+
+      <div class="card">
+        <img src="assets/4.jpeg" alt="Corporate AI">
+        <h3>Corporate AI Solutions</h3>
+        <p>Corporate AI Solutions: Optimize business with AI—predict customer behavior, detect fraud in real time, and gain productivity insights to boost efficiency, reduce risks, and improve retention.</p>
+      </div>
+
+      <div class="card">
+        <img src="assets/5.jpeg" alt="Healthcare AI">
+        <h3>Healthcare AI</h3>
+        <p>Healthcare AI Solutions: Enhance care with AI—medical image analysis for faster diagnoses, patient data models for outcome prediction, and real-time health monitoring to detect risks early and improve efficiency.</p>
+      </div>
+
+      <div class="card">
+        <img src="assets/6.jpeg" alt="Transport AI">
+        <h3>Transportation & Logistics</h3>
+        <p>Transportation & Logistics: Optimize supply chain with AI—route optimization to cut costs, demand forecasting for better planning, and smart traffic management to reduce congestion and speed up deliveries.</p>
+      </div>
+
+      <div class="card">
+        <img src="assets/7.jpeg" alt="Telecom AI">
+        <h3>Telecommunication AI</h3>
+        <p>Telecommunication AI: Enhance services with AI—optimize networks for speed & reliability, predict maintenance to prevent outages, and use chatbots for instant support, lowering costs & boosting satisfaction.</p>
+      </div>
+
+      <div class="card">
+        <img src="assets/8.jpeg" alt="Custom AI">
+        <h3>Custom AI Development</h3>
+        <p>Custom AI Development: Build tailored AI models, manage end-to-end project implementation, and provide AI strategy & consulting to solve business problems and align with long-term growth goals.</p>
+      </div>
+
+      <div class="card">
+        <img src="assets/9.jpeg">
+        <h3>Cloud & Deployment</h3>
+        <p>We deploy AI models efficiently on AWS, Azure, GCP, build scalable infrastructure, and set up MLOps for continuous updates, ensuring reliable, high-performing AI solutions in real world.</p>
+      </div>
+
+      <div class="card">
+        <img src="assets/10.jpeg" alt="Training">
+        <h3>Training & Consultation</h3>
+        <p>We help businesses thrive in AI with hands-on workshops, corporate training, and strategic consulting, building team expertise, leveraging data, and aligning AI initiatives with business goals.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="section contact" id="contact">
+  <h2>Contact Us</h2>
+  <div>
+    📞 <b><a href="tel:8285792553">8285792553</a></b> <br/>
+    📧 <b><a href="mailto:akhilmishra1997@gmail.com">akhilmishra1997@gmail.com</a></b>
+  </div>
+</section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2025 AKM - All Rights Reserved.</p>
+  </footer>
+
+  <!-- JS -->
   <script>
-    // Tabs interaction
-    const tabs = Array.from(document.querySelectorAll('[role="tab"]'));
-    const panels = Array.from(document.querySelectorAll('.tab-panel'));
-
-    function activateTab(tab) {
-      tabs.forEach(t => {
-        t.classList.toggle('is-active', t === tab);
-        t.setAttribute('aria-selected', t === tab ? 'true' : 'false');
-        t.tabIndex = t === tab ? 0 : -1;
-      });
-      panels.forEach(p => p.classList.remove('active'));
-      const panelId = tab.getAttribute('aria-controls');
-      const panel = document.getElementById(panelId);
-      if (panel) panel.classList.add('active');
-    }
-
-    tabs.forEach(tab => {
-      tab.addEventListener('click', () => activateTab(tab));
-      tab.addEventListener('keydown', (e) => {
-        const idx = tabs.indexOf(tab);
-        if (e.key === 'ArrowRight') {
-          const next = tabs[(idx + 1) % tabs.length];
-          next.focus(); activateTab(next);
-        } else if (e.key === 'ArrowLeft') {
-          const prev = tabs[(idx - 1 + tabs.length) % tabs.length];
-          prev.focus(); activateTab(prev);
-        }
-      });
-    });
-
-    // Set initial active tab
-    const firstActive = tabs.find(t => t.classList.contains('is-active')) || tabs[0];
-    if (firstActive) activateTab(firstActive);
-
-    // Image lightbox (zoom)
-    const lightbox = document.getElementById('lightbox');
-    const lightboxImg = document.getElementById('lightbox-img');
-
-    document.querySelectorAll('[data-zoomable]').forEach(img => {
-      img.addEventListener('click', () => {
-        const full = img.getAttribute('data-full') || img.src;
-        lightboxImg.src = full;
-        lightbox.showModal();
-      });
-    });
-
-    // Close lightbox when clicking outside image
-    lightbox.addEventListener('click', (e) => {
-      const rect = lightboxImg.getBoundingClientRect();
-      const clickInsideImage =
-        e.clientX >= rect.left && e.clientX <= rect.right &&
-        e.clientY >= rect.top && e.clientY <= rect.bottom;
-      if (!clickInsideImage) lightbox.close();
-    });
+    const toggle=document.querySelector('.menu-toggle');
+    const navMenu=document.querySelector('nav ul');
+    toggle.addEventListener('click',()=>{navMenu.classList.toggle('active');});
   </script>
+
 </body>
 </html>
